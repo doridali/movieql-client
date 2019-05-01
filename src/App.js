@@ -15,7 +15,9 @@ const Wrapper = styled.div`
   margin: 0 auto;
   width: 100%;
 `;
-
+// const Upper_bar = styled.div`
+//   height: 3.5rem;
+// `;
 class App extends Component {
   state = {
     token: null,
@@ -45,7 +47,6 @@ class App extends Component {
           <ApolloProvider client={client}>
             <ApolloHooksProvider client={client}>
               <MainNavigation />
-
               <Wrapper>
                 <main className="main_content">
                   <Switch>

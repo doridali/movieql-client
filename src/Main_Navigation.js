@@ -23,6 +23,7 @@ const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  z-index: 10;
 `;
 
 const mainNavigation = props => (
@@ -31,7 +32,7 @@ const mainNavigation = props => (
       return (
         <Header>
           <div className="main-navigation__logo">
-            <h1>Book Review</h1>
+            <h1>Movie Review</h1>
           </div>
           <nav className="main-navigation__items">
             <ul>
