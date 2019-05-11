@@ -2,12 +2,14 @@ import React from "react";
 import { MOVIE_DETAILS } from "./queries";
 import { Helmet } from "react-helmet";
 import Movie from "./Movie";
+import MovieCard from "./Movie-card";
 import styled, { css, keyframes } from "styled-components";
 import { useQuery } from "react-apollo-hooks";
+import Newmovie from "./Moviedetail";
 
 const Container = styled.div`
-  margin-bottom: 50px;
-  padding: 3.5rem 2rem 0;
+  margin-bottom: 5rem;
+  padding: 3.5rem 2rem 3rem;
   justify-content: center;
 `;
 
@@ -74,14 +76,20 @@ const Paragraph = styled.span`
   text-overflow: ellipsis;
  }
 `;
-
-const MovieContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 0.7fr);
+const NewContainer = styled.div`
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
-  justify-items: center;
-  margin: 1rem 0px 6rem;
+  font-size: 15px;
 `;
+// const MovieContainer = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(3, 0.7fr);
+//   flex-wrap: wrap;
+//   justify-items: center;
+//   margin: 1rem 0px 6rem;
+// `;
 const Loadmsg = styled.div`
   font-size: 20px;
   display: flex;
@@ -97,6 +105,7 @@ const Detail = ({
   const { loading, error, data } = useQuery(MOVIE_DETAILS, {
     variables: { movieId: parseInt(movieId, 10) }
   });
+  console.log(movieId);
   if (loading)
     return (
       <React.Fragment>
@@ -108,6 +117,7 @@ const Detail = ({
   return (
     <React.Fragment>
       <Container>
+        <Title>Information</Title>
         <Helmet>
           <title>{data.movie.title} | MovieQL</title>
         </Helmet>
@@ -123,18 +133,27 @@ const Detail = ({
             <Paragraph>{data.movie.description_intro}</Paragraph>
           </Text>
         </ReviewCard>
+
+        {/* <MovieCard
+          id={movieId}
+          poster={data.movie.medium_cover_image}
+          title={data.movie.title}
+        /> */}
+
         <Title>Suggested</Title>
-        <MovieContainer>
+        {/* <MovieContainer> */}
+        <NewContainer>
           {data.suggestions.map(movie => (
-            <Movie
+            <Newmovie
               key={movie.id}
               id={movie.id}
               title={movie.title}
               genres={movie.genres}
               poster={movie.medium_cover_image}
+              summary={movie.summary}
             />
           ))}
-        </MovieContainer>
+        </NewContainer>
       </Container>
     </React.Fragment>
   );
