@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { MOVIE_DETAILS } from "./queries";
-import { useQuery } from "react-apollo-hooks";
+
 import PropTypes from "prop-types";
 import Movie from "./Moviedetail";
 import styled from "styled-components";
