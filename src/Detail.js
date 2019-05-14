@@ -36,7 +36,6 @@ const ReviewCard = styled.div`
     color: white;
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
-    border-radius: 7px;
     z-index: 20;
   }
   &:hover #after::after {
@@ -67,7 +66,7 @@ const Vailed = styled.div`
   display: flex;
   height: 345px;
   min-width: 430px;
-  left: 43%;
+  left:30%
   position: absolute;
   text-transform: none;
   font-size: 0.85em;
@@ -77,9 +76,12 @@ const Vailed = styled.div`
   align-items: center;
   border-radius: 7px;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: scale3d(0.8, 0.8, 1);
+  transform: scale3d(0.8, 0.8, 1);
 
   &::after {
-    background-color: rgba(0, 0, 0, 0.6);
     position: absolute;
     top: 0;
     left: 0;
@@ -93,6 +95,8 @@ const Vailed = styled.div`
     transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 0, 1);
     -webkit-transform-origin: 50% 50%;
     transform-origin: 50% 50%;
+    -webkit-transform: scale3d(0.8, 0.8, 1);
+    transform: scale3d(0.8, 0.8, 1);
   }
 `;
 
