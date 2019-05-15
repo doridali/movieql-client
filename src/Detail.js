@@ -12,37 +12,65 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const ReviewCard = styled.div`
-  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.19), 6px 6px 6px rgba(0, 0, 0, 0.23);
-  background-color: white;
-  display: flex;
-  flex-direction: row;
+const Outbox = styled.div`
+  position: relative;
+  float: left;
+  overflow: hidden;
   height: 345px;
   border-radius: 7px;
   margin: 0 0 2.5rem;
   min-width: 430px;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.19), 6px 6px 6px rgba(0, 0, 0, 0.23);
+  background-color: white;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.85);
+  &:hover #card {
+    background-color: rgba(0, 0, 20, 0.95);
   }
 
   &:hover #before {
-    opacity: 0.2;
-    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-    transition: opacity 0.35s, transform 0.35s;
+    opacity: 0.15;
   }
-  &:hover #after {
+  &:hover #popup {
     opacity: 1;
-    color: white;
+    z-index: 40;
     -webkit-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1);
-    z-index: 20;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    box-sizing: border-box;
   }
-  &:hover #after::after {
-    opacity: 1;
-    -webkit-transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 1, 1);
-    transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 1, 1);
-  }
+`;
+
+const ReviewCard = styled.div`
+  display: flex;
+  flex-direction: row;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  // &::after {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   border-top: 1px solid #fff;
+  //   border-bottom: 1px solid #fff;
+  //   content: "";
+  //   box-sizing: border-box;
+  //   opacity: 0;
+  //   -webkit-transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 0, 1);
+  //   transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 0, 1);
+  //   -webkit-transform-origin: 50% 50%;
+  //   transform-origin: 50% 50%;
+  //   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  //   transition: opacity 0.35s, transform 0.35s;
+  // }
+
+  // &:hover::after {
+  //   opacity: 1;
+  //   -webkit-transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 1.7, 1);
+  //   transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 1.7, 1);
+  // }
 `;
 // background-color: ${props => (props.danger ? "#bf34fc" : "#2bc534")};
 
@@ -59,53 +87,70 @@ const Card = styled.div`
   border-radius: 7px;
   position: absolute;
   transform-style: preserve-3d;
-  transition: all 1s;
 `;
 
 const Vailed = styled.div`
   display: flex;
   height: 345px;
+  width: 100%;
   min-width: 430px;
-  left:30%
   position: absolute;
+  padding: 0 3rem 0;
   text-transform: none;
   font-size: 0.85em;
   opacity: 0;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: 7px;
-  font-family: Arial, Helvetica, sans-serif;
+
   -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
   transition: opacity 0.35s, transform 0.35s;
   -webkit-transform: scale3d(0.8, 0.8, 1);
   transform: scale3d(0.8, 0.8, 1);
+`;
 
-  &::after {
+const Blockq = styled.blockquote`
+  font-family: Georgia, serif;
+  font-weight: 100;
+  font-size: 2rem;
+  max-width: 600px;
+  line-height: 1.4;
+  position: relative;
+  margin: 0;
+  padding: 0.5rem;
+
+  &:before,
+  &:after {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
-    content: "";
-    opacity: 0;
-    -webkit-transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 0, 1);
-    transform: rotate3d(0, 0, 1, 45deg) scale3d(1, 0, 1);
-    -webkit-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    -webkit-transform: scale3d(0.8, 0.8, 1);
-    transform: scale3d(0.8, 0.8, 1);
+    width: 4rem;
+    height: 4rem;
+    opacity: 0.8;
+  }
+  &:before {
+    content: "“";
+    color: #ffcc66;
+    font-size: 6.5rem;
+    left: -4rem;
+    top: -2rem;
+    opacity: 0.8;
+  }
+  &:after {
+    content: "”";
+    color: #ff67a0;
+    font-size: 6.5rem;
+    right: -5rem;
+    bottom: 0rem;
   }
 `;
 
 const Coment = styled.p`
+  font-family: "Song Myung", serif;
+  text-decoration-style: solid;
   text-align: center;
-  color: white;
+  color: #fff;
   line-height: 1.1;
-  font-size: 2em;
-  font-wieght: 700;
+  font-wieght: 800;
+  text-shadow: 2px 2px 1px rgba(250, 250, 250, 0.3);
 `;
 
 const Image = styled(Card.withComponent("img"))`
@@ -172,7 +217,6 @@ const Detail = ({
   const { loading, error, data } = useQuery(MOVIE_DETAILS, {
     variables: { movieId: parseInt(movieId, 10) }
   });
-  console.log(movieId);
   if (loading)
     return (
       <React.Fragment>
@@ -180,7 +224,7 @@ const Detail = ({
       </React.Fragment>
     );
   if (error) return "error";
-
+  console.log(data.movie);
   return (
     <React.Fragment>
       <Container>
@@ -188,22 +232,27 @@ const Detail = ({
         <Helmet>
           <title>{data.movie.title} | MovieQL</title>
         </Helmet>
-        <ReviewCard id="card">
-          <Vailed id="after">
-            <Coment>"</Coment> <Coment>나타날 글자</Coment>
-            <Coment>"</Coment>
+        <Outbox>
+          <Vailed id="popup">
+            <div style={{ alignSelf: "center", padding: "0 1rem" }}>
+              <Blockq>
+                <Coment>{data.movie.summary}</Coment>
+              </Blockq>
+            </div>
           </Vailed>
-          <Image src={data.movie.medium_cover_image} id="before" />
-          <Text id="before">
-            <Title>{data.movie.title}</Title>
-            {/* <Paragraph>
+          <ReviewCard id="card">
+            <Image src={data.movie.medium_cover_image} id="before" />
+            <Text id="before">
+              <Title>{data.movie.title}</Title>
+              {/* <Paragraph>
               <b>Rating: {data.movie.rating}</b>
                font-weight: ${props => (props.bold ? "500" : "400")}
 
             </Paragraph> */}
-            <Paragraph>{data.movie.description_intro}</Paragraph>
-          </Text>
-        </ReviewCard>
+              <Paragraph>{data.movie.description_intro}</Paragraph>
+            </Text>
+          </ReviewCard>{" "}
+        </Outbox>
 
         {/* <MovieCard
           id={movieId}

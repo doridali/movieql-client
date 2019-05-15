@@ -26,8 +26,8 @@ figure.effect-jazz figcaption::after {
 	opacity: 0;
 	-webkit-transform: rotate3d(0,0,1,45deg) scale3d(1,0,1);
 	transform: rotate3d(0,0,1,45deg) scale3d(1,0,1);
-	-webkit-transform-origin: 20% 90%;
-	transform-origin: 20% 90%;
+	-webkit-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
 }
 
 figure.effect-jazz h2,

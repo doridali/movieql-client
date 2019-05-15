@@ -72,7 +72,6 @@ const H1 = styled.div`
 `;
 
 function Movie({ id, title, poster, genres, summary }) {
-  console.log({ summary }, { title });
   return (
     <LinkStyled to={`/details/${id}`}>
       {/* <Main> */}
