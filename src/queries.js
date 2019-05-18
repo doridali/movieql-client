@@ -18,7 +18,6 @@ export const MOVIE_DETAILS = gql`
       medium_cover_image
       title
       rating
-      summary
       description_intro
       language
       genres
@@ -28,6 +27,9 @@ export const MOVIE_DETAILS = gql`
       title
       genres
       medium_cover_image
+      summary
+    }
+    summary(id: $movieId) {
       summary
     }
   }

@@ -224,7 +224,7 @@ const Detail = ({
       </React.Fragment>
     );
   if (error) return "error";
-  console.log(data.movie);
+  console.log(data);
   return (
     <React.Fragment>
       <Container>
@@ -236,7 +236,7 @@ const Detail = ({
           <Vailed id="popup">
             <div style={{ alignSelf: "center", padding: "0 1rem" }}>
               <Blockq>
-                <Coment>{data.movie.summary}</Coment>
+                <Coment>djfkjkd</Coment>
               </Blockq>
             </div>
           </Vailed>
