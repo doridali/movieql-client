@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { HOME_PAGE } from "./queries";
 import Movie from "./Movie";
 import { useQuery } from "react-apollo-hooks";
+import Loader from "./Loader";
 
 // const Container = styled.div`
 
@@ -17,15 +18,10 @@ import { useQuery } from "react-apollo-hooks";
 const Container = styled.div`
   width: 90%;
   display: flex;
-  padding: 3.5rem 2rem;
+  padding: 3rem 2rem;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0;
-`;
-
-const Loadmsg = styled.div`
-  font-size: 20px;
-  align-content: center;
+  margin: 0 auto;
 `;
 
 const Home = () => {
@@ -36,7 +32,7 @@ const Home = () => {
         <title>Home | MovieQL</title>
       </Helmet>
 
-      {loading && <Loadmsg>"Loading"</Loadmsg>}
+      {loading && <Loader style={{ margintop: "-3rem" }} />}
       {error && "Something is wrong"}
       {!loading &&
         data &&

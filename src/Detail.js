@@ -5,10 +5,11 @@ import { Helmet } from "react-helmet";
 import styled, { css, keyframes } from "styled-components";
 import { useQuery } from "react-apollo-hooks";
 import Newmovie from "./Moviedetail";
-
+import Loader from "./Loader";
+import "./loader.css";
 const Container = styled.div`
   margin-bottom: 5rem;
-  padding: 3.5rem 2rem 3rem;
+  padding: 3rem 2rem 3rem;
   justify-content: center;
 `;
 
@@ -202,13 +203,7 @@ const NewContainer = styled.div`
 //   justify-items: center;
 //   margin: 1rem 0px 6rem;
 // `;
-const Loadmsg = styled.div`
-  font-size: 20px;
-  display: flex;
-  padding: 3rem 2rem;
-  align-content: center;
-  justify-content: center;
-`;
+
 const Detail = ({
   match: {
     params: { movieId }
@@ -220,7 +215,7 @@ const Detail = ({
   if (loading)
     return (
       <React.Fragment>
-        <Loadmsg>"Loading"</Loadmsg>
+        <Loader />
       </React.Fragment>
     );
   if (error) return "error";
